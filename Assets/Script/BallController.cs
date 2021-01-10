@@ -26,6 +26,9 @@ public class BallController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !ballLaunched)
         {
             BallStartThorw();
+        }else if (!ballLaunched)
+        {
+            this.transform.position = player.position;
         }
 
         if(rb.velocity.x > 0)
