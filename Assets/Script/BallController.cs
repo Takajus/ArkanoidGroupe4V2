@@ -10,12 +10,15 @@ public class BallController : MonoBehaviour
     private bool moveRight;
     private bool moveUp;
     private Rigidbody2D rb;
+    [SerializeField] private GameObject ballPrefab;
+    private Transform player;
 
     void Start()
     {
         speedX = 0;
         speedY = 0;
         rb = this.GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
@@ -87,4 +90,13 @@ public class BallController : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("DeathZone"))
+        {                           
+            Instantiate(ballPrefab, player.position, player.rotation);
+            Destroy(this.gameObject);
+        }
+    }
+
 }
