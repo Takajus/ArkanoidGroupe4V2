@@ -79,4 +79,12 @@ public class BallController : MonoBehaviour
         }
         rb.velocity = new Vector2(x, y);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Brick"))
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }
