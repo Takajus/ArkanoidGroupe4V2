@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PaddleScript : MonoBehaviour
 {
+    public int playerId;
+
     Rigidbody2D rb;
     public float speed = 10f;
 
@@ -14,13 +16,27 @@ public class PaddleScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if(playerId == 0)
         {
-            transform.position -= transform.right * (Time.deltaTime * speed);
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                transform.position -= transform.right * (Time.deltaTime * speed);
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.position += transform.right * (Time.deltaTime * speed);
+            }
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if(playerId == 1)
         {
-            transform.position += transform.right * (Time.deltaTime * speed);
+            if (Input.GetKey(KeyCode.Q))
+            {
+                transform.position -= transform.right * (Time.deltaTime * speed);
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                transform.position += transform.right * (Time.deltaTime * speed);
+            }
         }
     }
 }
