@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class PaddleScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Rigidbody2D rb;
+    public float speed = 10f;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.position -= transform.right * (Time.deltaTime * speed);
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.position += transform.right * (Time.deltaTime * speed);
+        }
     }
 }
