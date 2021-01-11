@@ -9,6 +9,7 @@ public class PlayerInfoManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     [SerializeField] private GameObject[] health;
     public GameObject playerhealthIcon;
+    public GameObject gameoverScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +47,15 @@ public class PlayerInfoManager : MonoBehaviour
             health[2].SetActive(false);
             health[1].SetActive(false);
             health[0].SetActive(false);
+            GameOver();
             //Game over <----------------------------------
         }
+    }
+
+    private void GameOver()
+    {
+        Time.timeScale = 0;
+        gameoverScreen.SetActive(true);
+        GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>().text = "Score : " + playerInfo.score;
     }
 }
