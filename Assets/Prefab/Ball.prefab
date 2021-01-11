@@ -99,6 +99,7 @@ MonoBehaviour:
   speedX: 0
   speedY: 0
   ballPrefab: {fileID: 3189298095035659025}
+  playerInfo: {fileID: 11400000, guid: b066fbba45d34b84388e6ac6f3c9032f, type: 2}
 --- !u!58 &3189298095035659029
 CircleCollider2D:
   m_ObjectHideFlags: 0

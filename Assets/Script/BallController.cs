@@ -12,6 +12,7 @@ public class BallController : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private GameObject ballPrefab;
     private Transform player;
+    public PlayerScoreController playerInfo;
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class BallController : MonoBehaviour
             BallStartThorw();
         }else if (!ballLaunched)
         {
-            this.transform.position = player.position;
+            this.transform.position = new Vector3(player.position.x, player.position.y + 1, player.position.z);
         }
 
         if(rb.velocity.x > 0)
@@ -91,6 +92,7 @@ public class BallController : MonoBehaviour
         if (collision.gameObject.CompareTag("Brick"))
         {
             Destroy(collision.gameObject);
+            playerInfo.score += 10;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -99,6 +101,7 @@ public class BallController : MonoBehaviour
         {                           
             Instantiate(ballPrefab, player.position, player.rotation);
             Destroy(this.gameObject);
+            playerInfo.life -= 1;
         }
     }
 
