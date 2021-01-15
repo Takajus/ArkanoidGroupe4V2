@@ -29,7 +29,7 @@ public class BallController : MonoBehaviour
             BallStartThorw();
         }else if (!ballLaunched)
         {
-            this.transform.position = new Vector3(player.position.x, player.position.y + 1, player.position.z);
+            this.transform.position = new Vector3(player.position.x, player.position.y + .5f, player.position.z);
         }
 
         if(rb.velocity.x > 0)

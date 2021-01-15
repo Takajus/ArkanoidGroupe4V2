@@ -16,7 +16,7 @@ public class PlayerInfoManager : MonoBehaviour
     {
         playerInfo.life = 3;
         playerInfo.score = 0;
-
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
